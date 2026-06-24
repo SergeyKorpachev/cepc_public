@@ -1,0 +1,64 @@
+ ######################################################
+ # HTCondor Submit Description File. COMMON TEMPLATE   
+ # Next commands should be added to all your submit files   
+ ######################################################
+
+# Run your script with arguments from inputs in submit_htc_jobs_v01.sh:
+Executable = /cefs/higgs/korpachev/aaa/CEPCSW/job_tdr.sh
+#
+# Infos from your job:
+Output = job_tdr.sh.out
+#
+# Contains only last error:
+Error = job_tdr.sh.err
+#
+# Infos from the scheduler:
+Log = job_tdr.sh.log
+#
+# Default Universe for normal jobs
+Universe = vanilla
+#
+# Until now we use shared file system:
+Should_Transfer_Files = NO
+#
+# Defaults to submit dir:
+/cefs/higgs/korpachev/aaa/CEPCSW
+#
+# Test it:
+#Arguments = "sleep 600"
+#
+# Mailing requests:
+#notification = $<$Always | Complete | Error | Never$>$
+#notification = Always
+#
+# Your mail address:
+#notify_user = sergey.korpachev@yandex.ru
+#
+# As you need (see notify...)
+Notification = Always
+#
+# Defaults to 1 day:
++RequestRuntime = 3600 * 24
+#
+# Defaults to 3G
+###RequestDisk = 2048 * 6
+#
+# Defaults to 1500M:
+RequestMemory = 1024 * 6
+#
+# Defaults to 1:
+RequestCpus = 2
+#
+# Normally set by submit host:
+#############+MyProject = "af-ilc"
+#
+# Default:
+###Requirements = OpSysAndVer=="SL6"
+###Requirements = OpSysAndVer=="CentOS7"
+##########+MySingularityImage = "/cvmfs/grid.desy.de/container/sl6"
+##########+MySingularityImage = "/cvmfs/atlas.cern.ch/repo/containers/fs/singularity/x86_64-centos7"
+#
+# Default is 1 job per submit
+# Job Id is $(Cluster).$(Process) e.g. 20202.0
+
+Queue 1
